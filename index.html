@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yanz To-Do List | By Sofyan</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="image/download.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Yanz To-Do List</h1>
+            <button id="theme-toggle" title="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    
+        <div class="subtitle">
+            <span id="current-day"></span>, <span id="current-time"></span>
+        </div>
+    
+        <form id="todo-form" class="new-form-style">
+            <input type="text" id="todo-input" placeholder="What is your todo?" autocomplete="off" required>
+            <textarea id="todo-desc" placeholder="Add a description (optional)..."></textarea>
+            
+            <div class="form-row">
+                <div class="priority-group">
+                    <label for="priority">
+                        <i class="fas fa-flag"></i> Priority
+                    </label>
+                    <select id="priority">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <div class="date-group">
+                    <label for="date-input">
+                        <i class="far fa-calendar-alt"></i> Due Date
+                    </label>
+                    <input type="date" id="date-input">
+                </div>
+            </div>
+    
+            <button type="submit" id="add-btn" class="add-new-style"><i class="fas fa-plus"></i> Add Task</button>
+        </form>
+    
+        <div class="stats-and-controls">
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progress-bar-fill"></div>
+            </div>
+            <div class="task-stats">
+                <span id="completed-count">0</span> / <span id="total-count">0</span> Tasks Completed
+            </div>
+            <div class="controls">
+                <div class="filter-buttons">
+                    <button id="filter-all" class="active">All</button>
+                    <button id="filter-pending">Pending</button>
+                    <button id="filter-completed">Completed</button>
+                </div>
+                <div class="date-and-delete">
+                    <input type="date" id="filter-date">
+                    <button id="delete-all-btn">
+                        <i class="fas fa-trash-alt"></i> Delete All
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <ul id="todo-list"></ul>
+        
+    </div>
+
+    <div id="edit-modal-overlay" class="modal-overlay">
+        <div id="edit-modal" class="edit-modal">
+            <h2>Edit Task</h2>
+            <form id="edit-form">
+                <input type="text" id="edit-todo-input" required>
+                <textarea id="edit-todo-desc"></textarea>
+                <div class="form-row">
+                    <div class="priority-group">
+                        <label for="edit-priority"><i class="fas fa-flag"></i> Priority</label>
+                        <select id="edit-priority">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="date-group">
+                        <label for="edit-date-input"><i class="far fa-calendar-alt"></i> Due Date</label>
+                        <input type="date" id="edit-date-input">
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="cancel-edit-btn">Cancel</button>
+                    <button type="submit" id="save-edit-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="details-modal-overlay" class="modal-overlay">
+        <div id="details-modal" class="details-modal">
+            <div class="details-header">
+                <h2 id="details-title">Task Title</h2>
+                <button id="details-close-btn">&times;</button>
+            </div>
+            <p id="details-desc">No description provided.</p>
+            <div id="details-grid" class="details-grid">
+                </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
